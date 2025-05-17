@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Login OTP Code</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f5f7fb; color: #333333; margin: 0; padding: 0;">
+    <div style="max-width: 600px; margin: 0 auto; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);">
+        <div style="background-color: #16142a; color: white; padding: 30px 20px; text-align: center;">
+            <img src="https://apicopytrade.com/img/logo.png" alt="API Copy Trade" style="height: 50px; margin-bottom: 15px;">
+            <h1 style="margin-bottom: 0; font-size: 24px; font-weight: 700;">Your Login OTP Code</h1>
+            <p style="margin-top: 5px; font-size: 16px; font-weight: 300;">Secure access to your account</p>
+        </div>
+
+        <div style="padding: 30px;">
+            <h2 style="font-size: 20px; font-weight: 600; margin-top: 0;">Hello,</h2>
+            <p style="font-size: 15px; line-height: 1.5; margin-bottom: 15px;">We received a request to log in to your API Copy Trade account. Please use the following One-Time Password (OTP) to complete your login:</p>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <div style="display: inline-block; background-color: #f5f7fb; color: #a034fa; text-decoration: none; padding: 15px 30px; border-radius: 5px; font-weight: 700; font-size: 24px; letter-spacing: 2px; border: 1px dashed #a034fa;">
+                    {{.Code}}
+                </div>
+            </div>
+
+            <p style="font-size: 15px; line-height: 1.5; margin-bottom: 15px;">This OTP is valid for <strong>{{.Expiry}}</strong>. Please do not share this code with anyone.</p>
+            
+            <p style="font-size: 15px; line-height: 1.5; margin-bottom: 15px;">If you didn't request this OTP, please secure your account by changing your password immediately and contact our support team.</p>
+
+            <p style="font-size: 15px; line-height: 1.5; margin: 15px 0;">For security reasons, we recommend not sharing your OTP with anyone, including API Copy Trade staff.</p>
+
+            <p style="font-size: 15px; line-height: 1.5; margin-bottom: 0;">Best regards,<br>The API Copy Trade Team</p>
+        </div>
+
+        <div style="background-color: #f8f9fa; padding: 20px; text-align: center; font-size: 12px; color: #6c757d;">
+            <p style="margin-bottom: 5px;">© {{.CurrentYear}} API Copy Trade. All rights reserved.</p>
+            <p style="margin-bottom: 0;">Customer Support: support@apicopytrade.com</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Statement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #a034fa;
+            padding-bottom: 20px;
+        }
+        .logo {
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .user-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            background-color: #f5f7fb;
+            padding: 10px;
+            border-left: 4px solid #a034fa;
+            margin-bottom: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f5f7fb;
+        }
+        .summary {
+            display: flex;
+            justify-content: space-between;
+        }
+        .summary-box {
+            border: 1px solid #ddd;
+            padding: 15px;
+            width: 30%;
+            text-align: center;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+        }
+        .positive {
+            color: #28a745;
+        }
+        .negative {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{{.Company.Logo}}" alt="{{.Company.Name}}" class="logo">
+        <h1>{{.Company.Name}}</h1>
+        <h2>Investment Portfolio Statement</h2>
+    </div>
+
+    <div class="user-info">
+        <div>
+            <p><strong>Account Holder:</strong> {{.User.Name}}</p>
+            <p><strong>Email:</strong> {{.User.Email}}</p>
+            <p><strong>Membership:</strong> {{.User.Membership}}</p>
+        </div>
+        <div>
+            <p><strong>Statement Period:</strong> {{.StartDate.Format "Jan 02, 2006"}} - {{.EndDate.Format "Jan 02, 2006"}}</p>
+            <p><strong>Generated On:</strong> {{.GeneratedDate}}</p>
+        </div>
+    </div>
+
+    {{if .IncludePerformance}}
+    <div class="section">
+        <h3 class="section-title">Portfolio Summary</h3>
+        <div class="summary">
+            <div class="summary-box">
+                <h4>Total Balance</h4>
+                <p>${{printf "%.2f" .Portfolio.TotalBalance}}</p>
+            </div>
+            <div class="summary-box">
+                <h4>Total Invested</h4>
+                <p>${{printf "%.2f" .Portfolio.TotalInvested}}</p>
+            </div>
+            <div class="summary-box">
+                <h4>Total Profit</h4>
+                <p class="positive">${{printf "%.2f" .Portfolio.TotalProfit}}</p>
+            </div>
+        </div>
+        <div class="summary">
+            <div class="summary-box">
+                <h4>Active Investments</h4>
+                <p>{{.Portfolio.ActiveInvestments}}</p>
+            </div>
+            <div class="summary-box">
+                <h4>ROI</h4>
+                <p class="positive">{{printf "%.1f" .Portfolio.ROI}}%</p>
+            </div>
+            <div class="summary-box">
+                <h4>Current Value</h4>
+                <p>${{printf "%.2f" .Portfolio.CurrentValue}}</p>
+            </div>
+        </div>
+    </div>
+    {{end}}
+
+    <div class="section">
+        <h3 class="section-title">Transaction History</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Transaction ID</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Transactions}}
+                <tr>
+                    <td>{{.Date}}</td>
+                    <td>{{.ID}}</td>
+                    <td>{{.Type}}</td>
+                    <td>{{.Description}}</td>
+                    <td class="{{if ge .Amount 0}}positive{{else}}negative{{end}}">
+                        {{if ge .Amount 0}}+{{else}}-{{end}}${{printf "%.2f" (abs .Amount)}}
+                    </td>
+                    <td>{{.Status}}</td>
+                </tr>
+                {{else}}
+                <tr>
+                    <td colspan="6" style="text-align: center;">No transactions found for this period</td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">Transaction Summary</h3>
+        <div class="summary">
+            <div class="summary-box">
+                <h4>Total Deposits</h4>
+                <p class="positive">${{printf "%.2f" .Summary.TotalDeposits}}</p>
+            </div>
+            <div class="summary-box">
+                <h4>Total Withdrawals</h4>
+                <p class="negative">${{printf "%.2f" .Summary.TotalWithdrawals}}</p>
+            </div>
+            <div class="summary-box">
+                <h4>Net Change</h4>
+                <p class="{{if ge .Summary.NetChange 0}}positive{{else}}negative{{end}}">
+                    {{if ge .Summary.NetChange 0}}+{{else}}-{{end}}${{printf "%.2f" (abs .Summary.NetChange)}}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>This is an automated statement. No signature required.</p>
+        <p>For any questions, please contact {{.Company.SupportEmail}} or call {{.Company.Phone}}</p>
+        <p>© {{.CurrentYear}} {{.Company.Name}}. All rights reserved.</p>
+    </div>
+</body>
+</html>

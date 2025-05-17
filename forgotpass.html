@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Reset Request</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f5f7fb; color: #333333; margin: 0; padding: 0;">
+    <div style="max-width: 600px; margin: 0 auto; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);">
+        <div style="background-color: #16142a; color: white; padding: 30px 20px; text-align: center;">
+            <img src="https://apicopytrade.com/img/logo.png" alt="API Copy Trade" style="height: 50px; margin-bottom: 15px;">
+            <h1 style="margin-bottom: 0; font-size: 24px; font-weight: 700;">Password Reset Request</h1>
+            <p style="margin-top: 5px; font-size: 16px; font-weight: 300;">Secure your account</p>
+        </div>
+
+        <div style="padding: 30px;">
+            <h2 style="font-size: 20px; font-weight: 600; margin-top: 0;">Hello,</h2>
+            <p style="font-size: 15px; line-height: 1.5; margin-bottom: 15px;">We received a request to reset the password for your API Copy Trade account. Click the button below to reset your password:</p>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <a href="{{.ResetLink}}" style="display: inline-block; background-color: #a034fa; color: white; text-decoration: none; padding: 15px 30px; border-radius: 5px; font-weight: 700; font-size: 16px;">
+                    Reset Password
+                </a>
+            </div>
+
+            <p style="font-size: 15px; line-height: 1.5; margin-bottom: 15px;">This password reset link is valid for <strong>{{.Expiry}}</strong>. If you didn't request a password reset, please ignore this email or contact support if you have questions.</p>
+            
+            <p style="font-size: 15px; line-height: 1.5; margin-bottom: 15px;">For your security, this link will expire after the time period above. If you need to reset your password again, please submit a new request.</p>
+
+            <p style="font-size: 15px; line-height: 1.5; margin: 15px 0;">If you're having trouble with the button above, copy and paste the following URL into your browser:</p>
+            
+            <div style="word-break: break-all; font-size: 13px; color: #666; background-color: #f5f7fb; padding: 10px; border-radius: 5px; margin-bottom: 20px;">
+                {{.ResetLink}}
+            </div>
+
+            <p style="font-size: 15px; line-height: 1.5; margin-bottom: 0;">Best regards,<br>The API Copy Trade Team</p>
+        </div>
+
+        <div style="background-color: #f8f9fa; padding: 20px; text-align: center; font-size: 12px; color: #6c757d;">
+            <p style="margin-bottom: 5px;">¬© {{.CurrentYear}} API Copy Trade. All rights reserved.</p>
+            <p style="margin-bottom: 0;">Customer Support: support@apicopytrade.com</p>
+        </div>
+    </div>
+</body>
+</html>

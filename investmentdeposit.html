@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Deposit Instructions</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f5f7fb; color: #333333; margin: 0; padding: 0;">
+    <div style="max-width: 600px; margin: 0 auto; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);">
+        <div style="background-color: #16142a; color: white; padding: 30px 20px; text-align: center;">
+            <img src="https://apicopytrade.com/img/logo.png" alt="API Copy Trade" style="height: 50px; margin-bottom: 15px;">
+            <h1 style="margin-bottom: 0; font-size: 24px; font-weight: 700;">Investment Deposit Instructions</h1>
+            <p style="margin-top: 5px; font-size: 16px; font-weight: 300;">Complete your investment in {{.PlanName}}</p>
+        </div>
+
+        <div style="padding: 30px;">
+            <h2 style="font-size: 20px; font-weight: 600; margin-top: 0;">Hello,</h2>
+            <p style="font-size: 15px; line-height: 1.5; margin-bottom: 15px;">Thank you for choosing to invest with API Copy Trade. Please follow the instructions below to complete your deposit of <strong>{{.Amount}}</strong> for the <strong>{{.PlanName}}</strong> plan.</p>
+
+            <h3 style="font-size: 18px; font-weight: 600; margin-top: 25px; margin-bottom: 15px;">Available Payment Methods:</h3>
+
+            {{range .PaymentMethods}}
+            <div style="margin-bottom: 25px; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <h4 style="font-size: 16px; font-weight: 600; margin: 0; color: #a034fa;">{{.name}}</h4>
+                    {{if .network}}<span style="margin-left: 10px; font-size: 14px; color: #6c757d;">({{.network}})</span>{{end}}
+                </div>
+                <div style="margin-top: 10px;">
+                    <p style="font-size: 14px; margin-bottom: 5px; font-weight: 600;">Wallet Address:</p>
+                    <div style="background-color: #f5f7fb; padding: 12px; border-radius: 5px; word-break: break-all; font-family: monospace; font-size: 14px;">
+                        {{.wallet_address}}
+                    </div>
+                </div>
+            </div>
+            {{end}}
+
+            <p style="font-size: 15px; line-height: 1.5; margin-bottom: 15px; font-weight: 600; color: #a034fa;">Important Instructions:</p>
+            <ul style="font-size: 15px; line-height: 1.5; padding-left: 20px; margin-bottom: 20px;">
+                <li style="margin-bottom: 8px;">Send exactly <strong>{{.Amount}}</strong> to one of the addresses above</li>
+                <li style="margin-bottom: 8px;">Ensure you're sending to the correct network</li>
+                <li style="margin-bottom: 8px;">Transactions may take several minutes to confirm</li>
+            </ul>
+
+            <p style="font-size: 15px; line-height: 1.5; margin-bottom: 15px;">Once your payment is confirmed, your investment will be activated automatically. You'll receive a confirmation email when this process is complete.</p>
+
+            <p style="font-size: 15px; line-height: 1.5; margin: 15px 0;">If you encounter any issues or have questions about your deposit, please contact our support team immediately.</p>
+
+            <p style="font-size: 15px; line-height: 1.5; margin-bottom: 0;">Best regards,<br>The API Copy Trade Team</p>
+        </div>
+
+        <div style="background-color: #f8f9fa; padding: 20px; text-align: center; font-size: 12px; color: #6c757d;">
+            <p style="margin-bottom: 5px;">¬© {{.CurrentYear}} API Copy Trade. All rights reserved.</p>
+            <p style="margin-bottom: 0;">Customer Support: support@apicopytrade.com</p>
+        </div>
+    </div>
+</body>
+</html>
