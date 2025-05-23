@@ -126,7 +126,11 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="{{.Company.Logo}}" alt="{{.Company.Name}}" class="logo">
+            {{if .Company.Logo}}
+                <img src="{{.Company.Logo}}" alt="{{.Company.Name}}" class="logo">
+            {{else}}
+                <img src="https://apicopytrade.com/img/logo.png" alt="API Copy Trade" class="logo">
+            {{end}}
             <h1 style="margin-bottom: 5px; font-size: 24px;">{{.Company.Name}}</h1>
             <p style="margin-top: 0; font-size: 16px;">Investment Portfolio Statement</p>
         </div>
