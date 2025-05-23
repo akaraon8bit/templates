@@ -7,62 +7,105 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f5f7fb;
+            color: #333333;
             margin: 0;
-            padding: 20px;
-            color: #333;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
         .header {
+            background-color: #16142a;
+            color: white;
+            padding: 30px 20px;
             text-align: center;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #a034fa;
-            padding-bottom: 20px;
+            border-bottom: 4px solid #a034fa;
         }
         .logo {
             height: 50px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .content {
+            padding: 30px;
         }
         .user-info {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .user-info div {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 15px;
         }
         .section {
             margin-bottom: 30px;
         }
         .section-title {
             background-color: #f5f7fb;
-            padding: 10px;
+            padding: 12px 15px;
             border-left: 4px solid #a034fa;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-size: 14px;
         }
         th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+            border: 1px solid #e9ecef;
+            padding: 10px;
             text-align: left;
         }
         th {
             background-color: #f5f7fb;
+            font-weight: 600;
         }
         .summary {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 20px;
         }
         .summary-box {
-            border: 1px solid #ddd;
+            border: 1px solid #e9ecef;
             padding: 15px;
-            width: 30%;
+            flex: 1;
+            min-width: 150px;
             text-align: center;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .summary-box h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #6c757d;
+        }
+        .summary-box p {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
         }
         .footer {
-            margin-top: 30px;
+            background-color: #f8f9fa;
+            padding: 20px;
             text-align: center;
             font-size: 12px;
-            color: #777;
+            color: #6c757d;
         }
         .positive {
             color: #28a745;
@@ -70,119 +113,131 @@
         .negative {
             color: #dc3545;
         }
+        @media (max-width: 600px) {
+            .user-info {
+                flex-direction: column;
+            }
+            .summary-box {
+                min-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <img src="{{.Company.Logo}}" alt="{{.Company.Name}}" class="logo">
-        <h1>{{.Company.Name}}</h1>
-        <h2>Investment Portfolio Statement</h2>
-    </div>
-
-    <div class="user-info">
-        <div>
-            <p><strong>Account Holder:</strong> {{.User.Name}}</p>
-            <p><strong>Email:</strong> {{.User.Email}}</p>
-            <p><strong>Membership:</strong> {{.User.Membership}}</p>
+    <div class="container">
+        <div class="header">
+            <img src="{{.Company.Logo}}" alt="{{.Company.Name}}" class="logo">
+            <h1 style="margin-bottom: 5px; font-size: 24px;">{{.Company.Name}}</h1>
+            <p style="margin-top: 0; font-size: 16px;">Investment Portfolio Statement</p>
         </div>
-        <div>
-            <p><strong>Statement Period:</strong> {{.StartDate.Format "Jan 02, 2006"}} - {{.EndDate.Format "Jan 02, 2006"}}</p>
-            <p><strong>Generated On:</strong> {{.GeneratedDate}}</p>
-        </div>
-    </div>
 
-    {{if .IncludePerformance}}
-    <div class="section">
-        <h3 class="section-title">Portfolio Summary</h3>
-        <div class="summary">
-            <div class="summary-box">
-                <h4>Total Balance</h4>
-                <p>${{printf "%.2f" .Portfolio.TotalBalance}}</p>
+        <div class="content">
+            <div class="user-info">
+                <div>
+                    <p><strong>Account Holder:</strong> {{.User.Name}}</p>
+                    <p><strong>Email:</strong> {{.User.Email}}</p>
+                    <p><strong>Membership:</strong> {{.User.Membership}}</p>
+                </div>
+                <div>
+                    <p><strong>Statement Period:</strong> {{.StartDate.Format "Jan 02, 2006"}} - {{.EndDate.Format "Jan 02, 2006"}}</p>
+                    <p><strong>Generated On:</strong> {{.GeneratedDate}}</p>
+                </div>
             </div>
-            <div class="summary-box">
-                <h4>Total Invested</h4>
-                <p>${{printf "%.2f" .Portfolio.TotalInvested}}</p>
+
+            {{if .IncludePerformance}}
+            <div class="section">
+                <h3 class="section-title">Portfolio Summary</h3>
+                <div class="summary">
+                    <div class="summary-box">
+                        <h4>Total Balance</h4>
+                        <p>${{printf "%.2f" .Portfolio.TotalBalance}}</p>
+                    </div>
+                    <div class="summary-box">
+                        <h4>Total Invested</h4>
+                        <p>${{printf "%.2f" .Portfolio.TotalInvested}}</p>
+                    </div>
+                    <div class="summary-box">
+                        <h4>Total Profit</h4>
+                        <p class="positive">${{printf "%.2f" .Portfolio.TotalProfit}}</p>
+                    </div>
+                </div>
+                <div class="summary">
+                    <div class="summary-box">
+                        <h4>Active Investments</h4>
+                        <p>{{.Portfolio.ActiveInvestments}}</p>
+                    </div>
+                    <div class="summary-box">
+                        <h4>ROI</h4>
+                        <p class="positive">{{printf "%.1f" .Portfolio.ROI}}%</p>
+                    </div>
+                    <div class="summary-box">
+                        <h4>Current Value</h4>
+                        <p>${{printf "%.2f" .Portfolio.CurrentValue}}</p>
+                    </div>
+                </div>
             </div>
-            <div class="summary-box">
-                <h4>Total Profit</h4>
-                <p class="positive">${{printf "%.2f" .Portfolio.TotalProfit}}</p>
+            {{end}}
+
+            <div class="section">
+                <h3 class="section-title">Transaction History</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Transaction ID</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{range .Transactions}}
+                        <tr>
+                            <td>{{.Date}}</td>
+                            <td>{{.ID}}</td>
+                            <td>{{.Type}}</td>
+                            <td>{{.Description}}</td>
+                            <td class="{{if ge .Amount 0}}positive{{else}}negative{{end}}">
+                                {{if ge .Amount 0}}+{{else}}-{{end}}${{printf "%.2f" (abs .Amount)}}
+                            </td>
+                            <td>{{.Status}}</td>
+                        </tr>
+                        {{else}}
+                        <tr>
+                            <td colspan="6" style="text-align: center;">No transactions found for this period</td>
+                        </tr>
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Transaction Summary</h3>
+                <div class="summary">
+                    <div class="summary-box">
+                        <h4>Total Deposits</h4>
+                        <p class="positive">${{printf "%.2f" .Summary.TotalDeposits}}</p>
+                    </div>
+                    <div class="summary-box">
+                        <h4>Total Withdrawals</h4>
+                        <p class="negative">${{printf "%.2f" .Summary.TotalWithdrawals}}</p>
+                    </div>
+                    <div class="summary-box">
+                        <h4>Net Change</h4>
+                        <p class="{{if ge .Summary.NetChange 0}}positive{{else}}negative{{end}}">
+                            {{if ge .Summary.NetChange 0}}+{{else}}-{{end}}${{printf "%.2f" (abs .Summary.NetChange)}}
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="summary">
-            <div class="summary-box">
-                <h4>Active Investments</h4>
-                <p>{{.Portfolio.ActiveInvestments}}</p>
-            </div>
-            <div class="summary-box">
-                <h4>ROI</h4>
-                <p class="positive">{{printf "%.1f" .Portfolio.ROI}}%</p>
-            </div>
-            <div class="summary-box">
-                <h4>Current Value</h4>
-                <p>${{printf "%.2f" .Portfolio.CurrentValue}}</p>
-            </div>
+
+        <div class="footer">
+            <p style="margin-bottom: 5px;">This is an automated statement. No signature required.</p>
+            <p style="margin-bottom: 5px;">For any questions, please contact {{.Company.SupportEmail}} or call {{.Company.Phone}}</p>
+            <p style="margin-bottom: 0;">¬© {{.CurrentYear}} {{.Company.Name}}. All rights reserved.</p>
         </div>
-    </div>
-    {{end}}
-
-    <div class="section">
-        <h3 class="section-title">Transaction History</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Transaction ID</th>
-                    <th>Type</th>
-                    <th>Description</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{range .Transactions}}
-                <tr>
-                    <td>{{.Date}}</td>
-                    <td>{{.ID}}</td>
-                    <td>{{.Type}}</td>
-                    <td>{{.Description}}</td>
-                    <td class="{{if ge .Amount 0}}positive{{else}}negative{{end}}">
-                        {{if ge .Amount 0}}+{{else}}-{{end}}${{printf "%.2f" (abs .Amount)}}
-                    </td>
-                    <td>{{.Status}}</td>
-                </tr>
-                {{else}}
-                <tr>
-                    <td colspan="6" style="text-align: center;">No transactions found for this period</td>
-                </tr>
-                {{end}}
-            </tbody>
-        </table>
-    </div>
-
-    <div class="section">
-        <h3 class="section-title">Transaction Summary</h3>
-        <div class="summary">
-            <div class="summary-box">
-                <h4>Total Deposits</h4>
-                <p class="positive">${{printf "%.2f" .Summary.TotalDeposits}}</p>
-            </div>
-            <div class="summary-box">
-                <h4>Total Withdrawals</h4>
-                <p class="negative">${{printf "%.2f" .Summary.TotalWithdrawals}}</p>
-            </div>
-            <div class="summary-box">
-                <h4>Net Change</h4>
-                <p class="{{if ge .Summary.NetChange 0}}positive{{else}}negative{{end}}">
-                    {{if ge .Summary.NetChange 0}}+{{else}}-{{end}}${{printf "%.2f" (abs .Summary.NetChange)}}
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        <p>This is an automated statement. No signature required.</p>
-        <p>For any questions, please contact {{.Company.SupportEmail}} or call {{.Company.Phone}}</p>
-        <p>© {{.CurrentYear}} {{.Company.Name}}. All rights reserved.</p>
     </div>
 </body>
 </html>
