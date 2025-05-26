@@ -14,17 +14,17 @@
         </div>
 
         <div style="padding: 30px;">
-            <h2 style="font-size: 20px; font-weight: 600; margin-top: 0;">Hello,</h2>
+            <h2 style="font-size: 20px; font-weight: 600; margin-top: 0;">Hello {{.Name}},</h2>
             <p style="font-size: 15px; line-height: 1.5; margin-bottom: 15px;">We received a request to log in to your API Copy Trade account. Please use the following One-Time Password (OTP) to complete your login:</p>
-            
+
             <div style="text-align: center; margin: 20px 0;">
                 <div style="display: inline-block; background-color: #f5f7fb; color: #a034fa; text-decoration: none; padding: 15px 30px; border-radius: 5px; font-weight: 700; font-size: 24px; letter-spacing: 2px; border: 1px dashed #a034fa;">
-                    {{.Code}}
+                    {{.OTP}}
                 </div>
             </div>
 
             <p style="font-size: 15px; line-height: 1.5; margin-bottom: 15px;">This OTP is valid for <strong>{{.Expiry}}</strong>. Please do not share this code with anyone.</p>
-            
+
             <p style="font-size: 15px; line-height: 1.5; margin-bottom: 15px;">If you didn't request this OTP, please secure your account by changing your password immediately and contact our support team.</p>
 
             <p style="font-size: 15px; line-height: 1.5; margin: 15px 0;">For security reasons, we recommend not sharing your OTP with anyone, including API Copy Trade staff.</p>
