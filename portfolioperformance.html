@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Portfolio Performance</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f5f7fb; color: #333333; margin: 0; padding: 0;">
+    <div style="max-width: 600px; margin: 0 auto; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);">
+        <div style="background-color: #16142a; color: white; padding: 30px 20px; text-align: center;">
+            <img src="https://apicopytrade.com/img/logo.png" alt="API Copy Trade" style="height: 50px; margin-bottom: 15px;">
+            <h1 style="margin-bottom: 0; font-size: 24px; font-weight: 700;">Your Daily Portfolio Performance</h1>
+            <p style="margin-top: 5px; font-size: 16px; font-weight: 300;">{{.Date}}</p>
+        </div>
+
+        <div style="padding: 30px;">
+            <h2 style="font-size: 20px; font-weight: 600; margin-top: 0;">Hello {{.Name}},</h2>
+            <p style="font-size: 15px; line-height: 1.5; margin-bottom: 15px;">Here's your daily portfolio performance update. Below is a summary of your investment activities as of today.</p>
+
+            <div style="margin-bottom: 25px; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+                <h3 style="font-size: 18px; font-weight: 600; margin-top: 0; margin-bottom: 20px; color: #a034fa;">Portfolio Summary</h3>
+
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <span style="font-size: 15px; font-weight: 600;">Total Balance:</span>
+                    <span style="font-size: 15px; font-weight: 600;">${{.TotalBalance}}</span>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <span style="font-size: 15px; font-weight: 600;">Total Invested:</span>
+                    <span style="font-size: 15px; font-weight: 600;">${{.TotalInvested}}</span>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <span style="font-size: 15px; font-weight: 600;">Total Profit:</span>
+                    <span style="font-size: 15px; font-weight: 600;">${{.TotalProfit}}</span>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <span style="font-size: 15px; font-weight: 600;">Daily Earnings:</span>
+                    <span style="font-size: 15px; font-weight: 600;">${{.DailyEarnings}}</span>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <span style="font-size: 15px; font-weight: 600;">Portfolio Growth:</span>
+                    <span style="font-size: 15px; font-weight: 600;">{{.PortfolioGrowth}}</span>
+                </div>
+
+                <div style="display: flex; justify-content: space-between;">
+                    <span style="font-size: 15px; font-weight: 600;">Active Investments:</span>
+                    <span style="font-size: 15px; font-weight: 600;">{{.ActiveInvestments}}</span>
+                </div>
+            </div>
+
+            <p style="font-size: 15px; line-height: 1.5; margin-bottom: 15px;">Your investments are working hard for you! Keep track of your portfolio's performance and watch your wealth grow.</p>
+
+            <p style="font-size: 15px; line-height: 1.5; margin: 15px 0;">If you have any questions about your portfolio or need assistance, our support team is always ready to help.</p>
+
+            <p style="font-size: 15px; line-height: 1.5; margin-bottom: 0;">Best regards,<br>The API Copy Trade Team</p>
+        </div>
+
+        <div style="background-color: #f8f9fa; padding: 20px; text-align: center; font-size: 12px; color: #6c757d;">
+            <p style="margin-bottom: 5px;">¬© {{.CurrentYear}} API Copy Trade. All rights reserved.</p>
+            <p style="margin-bottom: 0;">Customer Support: support@apicopytrade.com</p>
+        </div>
+    </div>
+</body>
+</html>
