@@ -1,9 +1,46 @@
 <html dir="ltr" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=no" />
     <title>Payment Received: ${{.Amount}} USD</title>
     <style type="text/css">
+      /* SupremeLL Fonts */
+      @font-face {
+        font-family: SupremeLLTest;
+        font-style: normal;
+        font-weight: 450;
+        src: url('https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/fonts/SupremeLL/SupremeLLTestSubWeb-Book.woff2') format('woff2'),
+          url('https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/fonts/SupremeLL/SupremeLLTestSubWeb-Book.woff') format('woff');
+        mso-font-alt: 'Calibri';
+      }
+
+      @font-face {
+        font-family: SupremeLLTest;
+        font-style: normal;
+        font-weight: 500;
+        src: url('https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/fonts/SupremeLL/SupremeLLTestSubWeb-Medium.woff2') format('woff2'),
+          url('https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/fonts/SupremeLL/SupremeLLTestSubWeb-Medium.woff') format('woff');
+        mso-font-alt: 'Calibri';
+      }
+
+      @font-face {
+        font-family: SupremeLLTest;
+        font-style: normal;
+        font-weight: 700;
+        src: url('https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/fonts/SupremeLL/SupremeLLTestSubWeb-Bold.woff2') format('woff2'),
+          url('https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/fonts/SupremeLL/SupremeLLTestSubWeb-Bold.woff') format('woff');
+        mso-font-alt: 'Calibri';
+      }
+
+      @font-face {
+        font-family: SupremeLLTest;
+        font-style: normal;
+        font-weight: 900;
+        src: url('https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/fonts/SupremeLL/SupremeLLTestSubWeb-Black.woff2') format('woff2'),
+          url('https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/fonts/SupremeLL/SupremeLLTestSubWeb-Black.woff') format('woff');
+        mso-font-alt: 'Calibri';
+      }
+
       /* Email styles */
       html {
         box-sizing: border-box;
@@ -22,11 +59,12 @@
 
       body {
         font-size: 14px !important;
-        font-weight: normal;
+        font-weight: 450;
         line-height: 1.4286;
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: SupremeLLTest, 'Avant Garde', Helvetica, Arial;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        font-smoothing: antialiased;
         background: #F5F7FA;
         color: #000000;
         height: 100%;
@@ -38,7 +76,8 @@
       a:visited {
         color: #0074DE;
         text-decoration: none;
-        font-weight: bold;
+        font-weight: 700;
+        font-family: SupremeLLTest, 'Avant Garde', Helvetica, Arial;
       }
 
       a:active,
@@ -60,9 +99,9 @@
       table {
         font-size: 14px;
         line-height: 1.4286;
-        font-weight: normal;
+        font-weight: 450;
         text-transform: none;
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: SupremeLLTest, 'Avant Garde', Helvetica, Arial;
         color: #000000;
       }
 
@@ -83,6 +122,10 @@
       div[style*="margin: 16px 0"] {
         margin: 0 !important;
       }
+
+      .ppsans {
+        font-family: SupremeLLTest, 'Avant Garde', Helvetica, Arial !important;
+      }
     </style>
 </head>
 
@@ -92,7 +135,7 @@
       <tbody>
         <tr>
           <td bgcolor="#F5F7FA" style="font-size:0px"></td>
-          <td bgcolor="#F5F7FA" width="640" align="center">
+          <td bgcolor="#F5F7FA" width="640" align="center" class="mobContent">
             <table cellPadding="0" cellSpacing="0" border="0" width="100%" dir="ltr" role="presentation">
               <tbody>
                 <tr>
@@ -115,7 +158,7 @@
                             <table width="100%" cellPadding="0" cellSpacing="0" border="0" dir="ltr" role="presentation">
                               <tbody>
                                 <tr>
-                                  <td align="center" style="font-weight:bold;font-size:20px;line-height:28px;padding:0px 24px 16px 24px"><span>Hello, {{.RecipientName}}</span></td>
+                                  <td align="center" style="font-weight:700;font-size:20px;line-height:28px;padding:0px 24px 16px 24px"><span>Hello, {{.RecipientName}}</span></td>
                                 </tr>
                               </tbody>
                             </table>
@@ -127,7 +170,7 @@
                 </tr>
               </tbody>
             </table>
-            <table cellPadding="0" cellSpacing="0" border="0" width="100%" dir="ltr" role="presentation">
+            <table cellPadding="0" cellSpacing="0" border="0" width="100%" class="ppsans" dir="ltr" role="presentation">
               <tbody>
                 <tr>
                   <td width="640" valign="top">
@@ -135,7 +178,7 @@
                       <tbody>
                         <tr>
                           <td align="center" style="padding:0px 24px 40px 24px;word-break:break-word">
-                            <p style="font-size:42px;line-height:46px;font-weight:bold;color:#000;margin:0"><span>You received ${{.Amount}} USD</span></p>
+                            <p class="ppsans" style="font-size:42px;line-height:46px;font-weight:900;color:#000;margin:0"><span>You received ${{.Amount}} USD</span></p>
                           </td>
                         </tr>
                       </tbody>
@@ -147,7 +190,7 @@
                             <table width="100%" cellSpacing="0" cellPadding="0" border="0" style="background:#fff;border-radius:18px" role="presentation">
                               <tbody>
                                 <tr>
-                                  <td align="center" style="vertical-align:top;padding:16px 16px 16px 16px">
+                                  <td align="center" class="ppsans" style="vertical-align:top;padding:16px 16px 16px 16px">
                                     <table width="100%" cellSpacing="0" cellPadding="0" border="0">
                                       <tbody>
                                         <tr>
@@ -155,20 +198,20 @@
                                             <table id="cartDetails" cellSpacing="0" cellPadding="0" border="0" width="100%" dir="ltr" style="font-size:14px">
                                               <tbody>
                                                 <tr>
-                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:36.5%;word-break:break-all;vertical-align:top"><span style="font-size:14px;color:#000000"><span>From</span></span></td>
-                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:63.5%;word-break:break-all;vertical-align:top"><span style="font-size:14px;color:#000000"><span>{{.SenderName}}<br/>{{.SenderEmail}}</span></span></td>
+                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:36.5%;word-break:break-all;vertical-align:top"><span class="" style="font-size:14px;color:#000000"><span>From</span></span></td>
+                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:63.5%;word-break:break-all;vertical-align:top"><span class="" style="font-size:14px;color:#000000"><span>{{.SenderName}}<br/>{{.SenderEmail}}</span></span></td>
                                                 </tr>
                                                 <tr>
-                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:36.5%;vertical-align:top"><span style="font-size:14px;color:#000000"><span>Transaction date</span></span></td>
-                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:63.5%;vertical-align:top"><span style="font-size:14px;color:#000000"><span>{{.TransactionDate}}</span></span></td>
+                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:36.5%;vertical-align:top"><span class="" style="font-size:14px;color:#000000"><span>Transaction date</span></span></td>
+                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:63.5%;vertical-align:top"><span class="" style="font-size:14px;color:#000000"><span>{{.TransactionDate}}</span></span></td>
                                                 </tr>
                                                 <tr>
-                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:36.5%;vertical-align:top"><span style="font-size:14px;color:#000000"><span>Transaction ID</span></span></td>
-                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:63.5%;vertical-align:top"><span style="font-size:14px;color:#000000"><span>{{.TransactionID}}</span></span></td>
+                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:36.5%;vertical-align:top"><span class="" style="font-size:14px;color:#000000"><span>Transaction ID</span></span></td>
+                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:63.5%;vertical-align:top"><span class="" style="font-size:14px;color:#000000"><span>{{.TransactionID}}</span></span></td>
                                                 </tr>
                                                 <tr>
-                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:36.5%;vertical-align:top"><span style="font-size:14px;color:#000000"><span>Description</span></span></td>
-                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:63.5%;vertical-align:top"><span style="font-size:14px;color:#000000"><span>{{.Description}}</span></span></td>
+                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:36.5%;vertical-align:top"><span class="" style="font-size:14px;color:#000000"><span>Description</span></span></td>
+                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:63.5%;vertical-align:top"><span class="" style="font-size:14px;color:#000000"><span>{{.Description}}</span></span></td>
                                                 </tr>
                                               </tbody>
                                             </table>
@@ -201,7 +244,7 @@
                                                 </tr>
                                                 <tr>
                                                   <td style="padding:0px 0px 0px 0px;vertical-align:top" colSpan="1"><span>Net amount</span></td>
-                                                  <td style="text-align:right;padding:0px 0px 0px 0px;width:135px;vertical-align:top;font-weight:bold;font-size:16px"><span>${{.Amount}} USD</span></td>
+                                                  <td style="text-align:right;padding:0px 0px 0px 0px;width:135px;vertical-align:top;font-weight:500;font-size:16px"><span>${{.Amount}} USD</span></td>
                                                 </tr>
                                               </tbody>
                                             </table>
@@ -220,7 +263,7 @@
                                     </table>
                                     <table border="0" cellPadding="0" cellSpacing="0" dir="ltr" role="presentation" style="font-size:14px;line-height:18px" width="100%">
                                       <tr>
-                                        <td style="text-align:left;font-size:14px;font-weight:bold;padding-bottom:12px">Funding source</td>
+                                        <td style="text-align:left;font-size:14px;font-weight:700;padding-bottom:12px">Funding source</td>
                                       </tr>
                                       <tr>
                                         <td style="padding-bottom:16px">
@@ -230,26 +273,26 @@
                                                 <table width="100%" cellSpacing="0" cellPadding="0" border="0" dir="ltr" role="presentation">
                                                   <tbody>
                                                     <tr>
-                                                      <td align="center" style="padding:0"><img src="https://www.paypalobjects.com/webstatic/icon/pp64.png" style="display:block;border-radius:2px;border:0" border="0" alt="PayPal" height="32" width="32" tabindex="-1" aria-hidden="true" /></td>
+                                                      <td align="center" class="ppsans" style="padding:0"><img class="" src="https://www.paypalobjects.com/webstatic/icon/pp64.png" style="display:block;border-radius:2px;border:0" border="0" alt="PayPal" height="32" width="32" tabindex="-1" aria-hidden="true" /></td>
                                                     </tr>
                                                   </tbody>
                                                 </table>
                                               </td>
                                               <td valign="top">
-                                                <p style="font-weight:bold;line-height:18px;padding:0;margin:0">PayPal Balance</p>
+                                                <p style="font-weight:500;line-height:18px;padding:0;margin:0">PayPal Balance</p>
                                               </td>
                                               <td valign="top" align="right">
-                                                <p style="font-size:14px;font-weight:bold;line-height:18px;padding:0;margin:0;padding-left:16px">${{.Amount}} USD</p>
+                                                <p style="font-size:14px;font-weight:500;line-height:18px;padding:0;margin:0;padding-left:16px">${{.Amount}} USD</p>
                                               </td>
                                             </tr>
                                           </table>
                                         </td>
                                       </tr>
                                       <tr data-testid="transaction-id">
-                                        <td style="padding-bottom:16px"><span style="font-size:14px;color:#000000"><span>Transaction ID: {{.TransactionID}}</span></span></td>
+                                        <td style="padding-bottom:16px"><span class="" style="font-size:14px;color:#000000"><span>Transaction ID: {{.TransactionID}}</span></span></td>
                                       </tr>
                                       <tr>
-                                        <td><a href="https://www.paypal.com/myaccount/activities/details/{{.TransactionID}}" target="_blank" rel="noopener noreferrer"><span>View payment details</span></a></td>
+                                        <td><a href="https://www.paypal.com/myaccount/activities/details/{{.TransactionID}}" target="_blank"><span>View payment details</span></a></td>
                                       </tr>
                                     </table>
                                   </td>
@@ -263,8 +306,8 @@
                     <table width="100%" cellPadding="0" cellSpacing="0" border="0">
                       <tbody>
                         <tr>
-                          <td style="padding:0px 24px 0 24px">
-                            <p style="font-size:12px;line-height:20px;color:#000000;margin:0;word-break:break-word" dir="ltr"><span>The payment was sent to {{.RecipientEmail}}</span></p>
+                          <td class="ppsans" style="padding:0px 24px 0 24px">
+                            <p class="ppsans" style="font-size:12px;line-height:20px;color:#000000;margin:0;word-break:break-word" dir="ltr"><span>The payment was sent to {{.RecipientEmail}}</span></p>
                           </td>
                         </tr>
                       </tbody>
@@ -293,17 +336,17 @@
                     <table id="body_footer_links" width="100%" cellPadding="0" cellSpacing="0" border="0" style="margin-bottom:0px" dir="ltr">
                       <tbody>
                         <tr>
-                          <td align="center" style="font-size:12px;line-height:16px;padding:10px 24px 23px 24px;color:#001435;font-weight:normal"><a href="https://www.paypal.com/us/smarthelp/home" target="_blank" rel="noopener noreferrer" style="color:#0074DE;text-decoration:none" alt="Help &amp; Contact">Help &amp; Contact</a><span style="padding:0px 5px"> | </span><a href="https://www.paypal.com/us/webapps/mpp/paypal-safety-and-security" target="_blank" rel="noopener noreferrer" style="color:#0074DE;text-decoration:none" alt="Security">Security</a><span style="padding:0px 5px"> | </span><a href="https://www.paypal.com/us/webapps/mpp/mobile-apps" target="_blank" rel="noopener noreferrer" style="color:#0074DE;text-decoration:none" alt="Apps">Apps</a></td>
+                          <td align="center" style="font-size:12px;line-height:16px;padding:10px 24px 23px 24px;color:#001435;font-weight:400" class="ppsans"><a href="https://www.paypal.com/us/smarthelp/home" target="_blank" class="ppsans" style="color:#0074DE;text-decoration:none" alt="Help &amp; Contact">Help &amp; Contact</a><span style="padding:0px 5px"> | </span><a href="https://www.paypal.com/us/webapps/mpp/paypal-safety-and-security" target="_blank" class="ppsans" style="color:#0074DE;text-decoration:none" alt="Security">Security</a><span style="padding:0px 5px"> | </span><a href="https://www.paypal.com/us/webapps/mpp/mobile-apps" target="_blank" class="ppsans" style="color:#0074DE;text-decoration:none" alt="Apps">Apps</a></td>
                         </tr>
                         <tr>
                           <td align="center" style="padding-bottom:10px;padding-top:0px;padding-left:11px;padding-right:20px">
                             <table cellPadding="0" cellSpacing="0" border="0" dir="ltr">
                               <tbody>
                                 <tr>
-                                  <td align="center" valign="middle" width="55"><a id="twitter" href="https://twitter.com/PayPal" target="_blank" rel="noopener noreferrer"><img border="0" src="https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/quantum_leap/footer-social-icons_x.png" width="32" height="32" style="display:block" alt="Twitter" /></a></td>
-                                  <td align="center" valign="middle" width="55"><a id="instagram" href="https://www.instagram.com/paypal/" target="_blank" rel="noopener noreferrer"><img border="0" src="https://paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/quantum_leap/footer-social-icons_instagram.png" width="32" height="32" style="display:block" alt="Instagram" /></a></td>
-                                  <td align="center" valign="middle" width="55"><a id="facebook" href="https://www.facebook.com/PayPalUSA" target="_blank" rel="noopener noreferrer"><img border="0" src="https://paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/quantum_leap/footer-social-icons_facebook.png" width="32" height="32" style="display:block" alt="Facebook" /></a></td>
-                                  <td align="center" valign="middle" width="55"><a id="linkedin" href="http://www.linkedin.com/company/1482" target="_blank" rel="noopener noreferrer"><img border="0" src="https://paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/quantum_leap/footer-social-icons_linkedin.png" width="32" height="32" style="display:block" alt="LinkedIn" /></a></td>
+                                  <td align="center" valign="middle" width="55"><a id="twitter" href="https://twitter.com/PayPal" target="_blank"><img border="0" src="https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/quantum_leap/footer-social-icons_x.png" width="32" height="32" style="display:block" alt="Twitter" /></a></td>
+                                  <td align="center" valign="middle" width="55"><a id="instagram" href="https://www.instagram.com/paypal/" target="_blank"><img border="0" src="https://paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/quantum_leap/footer-social-icons_instagram.png" width="32" height="32" style="display:block" alt="Instagram" /></a></td>
+                                  <td align="center" valign="middle" width="55"><a id="facebook" href="https://www.facebook.com/PayPalUSA" target="_blank"><img border="0" src="https://paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/quantum_leap/footer-social-icons_facebook.png" width="32" height="32" style="display:block" alt="Facebook" /></a></td>
+                                  <td align="center" valign="middle" width="55"><a id="linkedin" href="http://www.linkedin.com/company/1482" target="_blank"><img border="0" src="https://paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/quantum_leap/footer-social-icons_linkedin.png" width="32" height="32" style="display:block" alt="LinkedIn" /></a></td>
                                 </tr>
                               </tbody>
                             </table>
@@ -318,12 +361,12 @@
             <table cellPadding="0" cellSpacing="0" border="0" width="100%" style="padding:5px 24px 20px 24px">
               <tbody>
                 <tr>
-                  <td width="600">
+                  <td class="ppsans" width="600">
                     <table id="hideForTextFooter" width="100%" cellPadding="0" cellSpacing="0" border="0">
                       <tbody>
                         <tr>
                           <td style="font-size:12px;line-height:16px;padding:6px 0px">
-                            <p style="font-size:12px;margin:0" dir="ltr"><span>PayPal is committed to preventing fraudulent emails. Emails from PayPal will always contain your full name. <a href="https://www.paypal.com/us/webapps/mpp/security/suspicious-activity" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Learn to identify phishing</a></span></p>
+                            <p class="ppsans" style="font-size:12px;margin:0" dir="ltr"><span>PayPal is committed to preventing fraudulent emails. Emails from PayPal will always contain your full name. <a href="https://www.paypal.com/us/webapps/mpp/security/suspicious-activity" target="_blank" style="text-decoration:none">Learn to identify phishing</a></span></p>
                           </td>
                         </tr>
                       </tbody>
@@ -332,7 +375,7 @@
                       <tbody>
                         <tr>
                           <td style="font-size:12px;line-height:16px;padding:6px 0px">
-                            <p style="font-size:12px;margin:0" dir="ltr"><span>Please don't reply to this email. To get in touch with us, click <a href="https://www.paypal.com/selfhelp/home" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Help &amp; Contact</a>.</span></p>
+                            <p class="ppsans" style="font-size:12px;margin:0" dir="ltr"><span>Please don't reply to this email. To get in touch with us, click <a href="https://www.paypal.com/selfhelp/home" target="_blank" style="text-decoration:none">Help &amp; Contact</a>.</span></p>
                           </td>
                         </tr>
                       </tbody>
@@ -341,7 +384,7 @@
                       <tbody>
                         <tr>
                           <td style="font-size:12px;line-height:16px;padding:6px 0px">
-                            <p style="font-size:12px;margin:0" dir="ltr"><span>PayPal Customer Service can be reached at 888-221-1161.</span></p>
+                            <p class="ppsans" style="font-size:12px;margin:0" dir="ltr"><span>PayPal Customer Service can be reached at 888-221-1161.</span></p>
                           </td>
                         </tr>
                       </tbody>
@@ -350,7 +393,7 @@
                       <tbody>
                         <tr>
                           <td style="font-size:12px;line-height:16px;padding:6px 0px">
-                            <p style="font-size:12px;margin:0" dir="ltr">
+                            <p class="ppsans" style="font-size:12px;margin:0" dir="ltr">
                             <div style="font-size:12px" dir="ltr"><span>Copyright &copy; 1999-2025 PayPal, Inc. All rights reserved. PayPal is located at 2211 N. First St., San Jose, CA 95131.</span></div>
                             </p>
                           </td>
