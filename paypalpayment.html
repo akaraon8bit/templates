@@ -2,7 +2,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Payment Reminder: ${{.Amount}} USD Pending</title>
+    <title>Payment Received: ${{.Amount}} USD</title>
     <style type="text/css">
       /* Email styles */
       html {
@@ -83,18 +83,11 @@
       div[style*="margin: 16px 0"] {
         margin: 0 !important;
       }
-
-      .warning-box {
-        background-color: #FFF8E6;
-        border-left: 4px solid #FFC107;
-        padding: 16px;
-        margin: 16px 0;
-      }
     </style>
 </head>
 
 <body>
-    <h4 id="preHeader" style="display:none;color:#F5F7FA;font-size:0px;line-height:0px">Payment reminder details are inside.</h4>
+    <h4 id="preHeader" style="display:none;color:#F5F7FA;font-size:0px;line-height:0px">Payment details are inside.</h4>
     <table cellPadding="0" cellSpacing="0" border="0" width="100%" role="presentation">
       <tbody>
         <tr>
@@ -142,7 +135,7 @@
                       <tbody>
                         <tr>
                           <td align="center" style="padding:0px 24px 40px 24px;word-break:break-word">
-                            <p style="font-size:32px;line-height:36px;font-weight:bold;color:#000;margin:0"><span>Pending Deposit: ${{.Amount}} USD</span></p>
+                            <p style="font-size:42px;line-height:46px;font-weight:bold;color:#000;margin:0"><span>You received ${{.Amount}} USD</span></p>
                           </td>
                         </tr>
                       </tbody>
@@ -155,29 +148,6 @@
                               <tbody>
                                 <tr>
                                   <td align="center" style="vertical-align:top;padding:16px 16px 16px 16px">
-                                    <table width="100%" cellSpacing="0" cellPadding="0" border="0">
-                                      <tbody>
-                                        <tr>
-                                          <td style="padding:0px 0px 16px 0px">
-                                            <div class="warning-box">
-                                              <p style="font-size:16px;line-height:24px;margin:0 0 12px 0;font-weight:bold;">Payment Reminder</p>
-                                              <p style="margin:0;">This is a reminder that you have a pending amount of <strong>${{.Amount}} USD</strong> to be deposited into your PayPal balance.</p>
-                                              <p style="margin:12px 0 0 0;">Kindly accept this amount by depositing the fee into your PayPal account which will automatically process the pending deposit.</p>
-                                              <p style="margin:12px 0 0 0;color:#D32F2F;">If payment isn't accepted in 48 hours, it will be refunded immediately.</p>
-                                            </div>
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                    <table width="100%" cellSpacing="0" cellPadding="0" border="0">
-                                      <tbody>
-                                        <tr>
-                                          <td style="padding:0px 0px 16px 0px">
-                                            <hr style="border-top:1px solid #C6C6C6" />
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
                                     <table width="100%" cellSpacing="0" cellPadding="0" border="0">
                                       <tbody>
                                         <tr>
@@ -195,6 +165,10 @@
                                                 <tr>
                                                   <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:36.5%;vertical-align:top"><span style="font-size:14px;color:#000000"><span>Transaction ID</span></span></td>
                                                   <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:63.5%;vertical-align:top"><span style="font-size:14px;color:#000000"><span>{{.TransactionID}}</span></span></td>
+                                                </tr>
+                                                <tr>
+                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:36.5%;vertical-align:top"><span style="font-size:14px;color:#000000"><span>Description</span></span></td>
+                                                  <td style="padding:0px 0px 12px 0px;text-align:left;border-top:0px;width:63.5%;vertical-align:top"><span style="font-size:14px;color:#000000"><span>{{.Description}}</span></span></td>
                                                 </tr>
                                               </tbody>
                                             </table>
@@ -218,7 +192,7 @@
                                             <table id="cartDetails" cellSpacing="0" cellPadding="0" border="0" width="100%" dir="ltr" style="font-size:14px" role="presentation">
                                               <tbody>
                                                 <tr>
-                                                  <td style="padding:0px 0px 8px 0px;vertical-align:top" colSpan="1"><span>Pending amount</span></td>
+                                                  <td style="padding:0px 0px 8px 0px;vertical-align:top" colSpan="1"><span>Amount received</span></td>
                                                   <td style="text-align:right;padding:0px 0px 8px 0px;width:135px;vertical-align:top"><span>${{.Amount}} USD</span></td>
                                                 </tr>
                                                 <tr>
@@ -226,7 +200,7 @@
                                                   <td style="text-align:right;padding:0px 0px 0px 0px;width:135px;vertical-align:top"><span>${{.Fee}} USD</span></td>
                                                 </tr>
                                                 <tr>
-                                                  <td style="padding:0px 0px 0px 0px;vertical-align:top" colSpan="1"><span>Total to deposit</span></td>
+                                                  <td style="padding:0px 0px 0px 0px;vertical-align:top" colSpan="1"><span>Net amount</span></td>
                                                   <td style="text-align:right;padding:0px 0px 0px 0px;width:135px;vertical-align:top;font-weight:bold;font-size:16px"><span>${{.Amount}} USD</span></td>
                                                 </tr>
                                               </tbody>
